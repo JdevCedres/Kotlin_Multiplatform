@@ -57,6 +57,9 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.negotiation)
             implementation(libs.kotlin.serialization)
+            //Coil
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor2)
 
 
         }

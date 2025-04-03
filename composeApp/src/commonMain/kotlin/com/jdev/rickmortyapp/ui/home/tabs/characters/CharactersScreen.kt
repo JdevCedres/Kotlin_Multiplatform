@@ -21,11 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.input.KeyboardType.Companion.Text
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import com.jdev.rickmortyapp.domain.model.CharacterModel
 import com.jdev.rickmortyapp.ui.core.ex.vertical
 import io.ktor.websocket.Frame
@@ -52,10 +54,20 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
         shape = RoundedCornerShape(12)
     ) {
         if (characterModel == null) {
-            CircularProgressIndicator()
+            Box(contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+
         } else {
             Box(contentAlignment = Alignment.BottomStart) {
-                Box(Modifier.fillMaxSize().background(Color.Green.copy(alpha = 0.5f)))
+
+                AsyncImage(
+                    model = characterModel.image,
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+
                 Box(
                     Modifier.fillMaxSize().background(
                         Brush.horizontalGradient(
@@ -66,7 +78,7 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
                     )
                 )
                 Text(
-                    characterModel.isAlive.toString(),
+                    characterModel.name,
                     fontSize = 40.sp,
                     maxLines = 1,
                     minLines = 1,
