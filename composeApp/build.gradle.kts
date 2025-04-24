@@ -57,6 +57,12 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.negotiation)
             implementation(libs.kotlin.serialization)
+            //Coil
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor2)
+            //Paging3
+            implementation(libs.paging.common)
+            implementation(libs.paging.compose.common)
 
 
         }

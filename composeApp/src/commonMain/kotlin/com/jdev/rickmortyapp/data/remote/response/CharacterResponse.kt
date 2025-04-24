@@ -9,14 +9,16 @@ import kotlinx.serialization.Serializable
 data class CharacterResponse(
     val id: Int,
     val status: String,
-    val image: String
+    val image: String,
+    val name:String
 ) {
     // Esta función 'toDomain' convierte el objeto de la API (CharacterResponse) a un modelo de dominio (CharacterModel)
     fun toDomain(): CharacterModel {
         return CharacterModel(
             id = id,
             image = image,
-            isAlive = status.lowercase() == "alive"
+            isAlive = status.lowercase() == "alive",
+            name = name
         )
     }
 }
