@@ -2,6 +2,7 @@ package com.jdev.rickmortyapp.di
 
 import com.jdev.rickmortyapp.data.RepositoryImpl
 import com.jdev.rickmortyapp.data.remote.ApiService
+import com.jdev.rickmortyapp.data.remote.paging.CharactersPagingSource
 import com.jdev.rickmortyapp.domain.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
@@ -29,5 +30,6 @@ val dataModule = module {
         }
     }
     factoryOf(::ApiService)
-    factory<Repository>{ RepositoryImpl(get()) }
+    factory<Repository>{ RepositoryImpl(get(),get()) }
+    factoryOf(::CharactersPagingSource)
 }
