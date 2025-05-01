@@ -1,6 +1,8 @@
 package com.jdev.rickmortyapp.data.database.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.jdev.rickmortyapp.data.database.entity.CharacterOfTheDayEntity
 
@@ -9,5 +11,8 @@ import com.jdev.rickmortyapp.data.database.entity.CharacterOfTheDayEntity
 interface UserPreferencesDAO {
     @Query("SELECT * FROM characteroftheday")
     suspend fun getCharacterOfTheDayDB():CharacterOfTheDayEntity?
+
+    @Insert(entity = CharacterOfTheDayEntity::class, onConflict = OnConflictStrategy.REPLACE)
+   suspend fun saveCharacter(characterOfTheDayEntity: CharacterOfTheDayEntity)
 
 }
