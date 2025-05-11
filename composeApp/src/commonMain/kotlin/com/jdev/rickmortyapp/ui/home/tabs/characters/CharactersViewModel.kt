@@ -2,6 +2,7 @@ package com.jdev.rickmortyapp.ui.home.tabs.characters
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.jdev.rickmortyapp.domain.GetRandomCharacter
 import com.jdev.rickmortyapp.domain.Repository
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,6 @@ class CharactersViewModel(val getRandomCharacter: GetRandomCharacter, private va
     }
 
     private fun getAllCharacters() {
-        _state.update { state -> state.copy(characters = repository.getAllCharacters()) }
+        _state.update { state -> state.copy(characters = repository.getAllCharacters().cachedIn(viewModelScope)) }
     }
 }

@@ -9,7 +9,9 @@ import com.jdev.rickmortyapp.data.database.entity.CharacterOfTheDayEntity
 
 const val DATABASE_NAME = "rm_app_database.db"
 
-expect object RickMortyCTor:RoomDatabaseConstructor<RickMortyDatabase>
+expect object RickMortyCTor:RoomDatabaseConstructor<RickMortyDatabase> {
+    override fun initialize(): RickMortyDatabase
+}
 
 @Database(entities = [CharacterOfTheDayEntity::class], version = 1)
 @ConstructedBy(RickMortyCTor::class)

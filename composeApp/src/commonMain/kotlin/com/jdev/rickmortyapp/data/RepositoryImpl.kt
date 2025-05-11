@@ -4,7 +4,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.jdev.rickmortyapp.data.database.RickMortyDatabase
-import com.jdev.rickmortyapp.data.database.entity.CharacterOfTheDayEntity
 import com.jdev.rickmortyapp.data.remote.ApiService
 import com.jdev.rickmortyapp.data.remote.paging.CharactersPagingSource
 import com.jdev.rickmortyapp.domain.Repository
